@@ -1,0 +1,436 @@
+<html lang="en" style="scroll-behavior:smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cpcic.css"/>
+</head>
+<body>
+        <header style="width:100%; height:9%; padding:10px ;  display:flex; align-items:center; justify-content:space-between; border-bottom:2px solid #eee; font-family:Arial, sans-serif;">
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
+        <!-- LOGO -->
+        <div style="display:flex; align-items:center; gap:10px;">
+            <img src="logo.jpeg" alt="Logo" style="width:45px; height:45px; border-radius: 40px;">
+                        <h1 style="font-size:18px; color:black; letter-spacing:1px; text-transform:uppercase; margin:0;">(Cleaner Production and Climate Innovation Centre)</h1>
+
+        </div>
+
+        <!-- NAVIGATION -->
+        <nav style="flex-grow:1; margin-left:170px;">
+            <ul style="display:flex; align-items:center; list-style:none; gap:17px; margin:0; padding:0;">
+                <li><a href="index.php" class="top"  style="color: green ; font-weight: bolder;" >HOME</a></li>
+                <li><a href="#overview" class="top"  style="color: gray ; font-weight: bolder;">OVER VIEW</a></li>
+                <li>
+                    <div style="position:relative; display:inline-block;">
+                        <!-- Dropdown Button -->
+                        <div class="top"  style="color: gray ; font-weight: bolder;">
+                            SECTORS &#x25BC;
+                        </div>
+
+                        <!-- Dropdown List -->
+                        <ul style="position:absolute; top:110%; left:0; background:white; border:1px solid #ddd; border-radius:4px; list-style:none; padding:0; margin:0; width:200px; box-shadow:0 3px 8px rgba(0,0,0,0.1); display:none; z-index:1000;">
+                    
+                            <li><a href="industry.html" class="section">INDUSTRY</a></li>
+                            <li><a href="industry.html" class="section">AGRICULTURE</a></li>   
+                            <li><a href="tourisnm.html" class="section">TOURISM & HOSPITALITY</a></li>
+                            <li><a href="manufacture.html" class="section">MANUFACTURING</a></li>
+                            <li><a href="construction.html" class="section">CONSTRUCTION</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- HOVER SCRIPT (INLINE) -->
+                    <script>
+                        const dropdown = document.querySelector('div[style*="position:relative"]');
+                        const list = dropdown.querySelector('ul');
+
+                        let isInside = false;
+
+                        dropdown.addEventListener("mouseenter", () => {
+                            isInside = true;
+                            list.style.display = "block";
+                        });
+
+                        dropdown.addEventListener("mouseleave", () => {
+                            isInside = false;
+                            setTimeout(() => {
+                                if (!isInside) list.style.display = "none";
+                            }, 150); // small delay prevents flicker
+                        });
+
+                        list.addEventListener("mouseenter", () => {
+                            isInside = true;
+                            list.style.display = "block";
+                        });
+
+                        list.addEventListener("mouseleave", () => {
+                            isInside = false;
+                            setTimeout(() => {
+                                if (!isInside) list.style.display = "none";
+                             }, 150);
+                        });
+                    </script>
+                </li>
+
+                <li><a href="#gallery" class="top"  style="color: gray ; font-weight: bolder;">GALLERY</a></li>
+                <li><a href="#location" class="top"  style="color: gray ; font-weight: bolder;">LOCATION </a></li>
+            </ul>
+        </nav>
+
+        
+    </header>
+
+
+<div class="image-box">
+    <div class="box" id="one">EXPLORING </div>
+    <div class="box" id="two">MANUFACTURE</div>
+    <div class="box" id="three">TECHNOLOGY</div>
+</div>
+
+
+<section class="divisions" id="gallery">
+
+
+    <div class="division-grid">
+
+        <!-- Energy Division -->
+        <div class="division-card" id="energy">
+            <img src="top.jpeg" alt="Energy Division">
+            <h3>Irrigation</h3>
+            <p>CPCIC leads investment in solar, hydro, and green tech energy systems to power Rwanda sustainably.</p>
+        </div>
+
+        <!-- Construction Division -->
+        <div class="division-card" id="construction">
+            <img src="mine (2).jpeg" alt="Construction Division">
+            <h3>Sustainability</h3>
+            <p>We design, build, and innovate strong architectural and structural projects across the country.</p>
+        </div>
+
+        <!-- Mining Division -->
+        <div class="division-card" id="mining">
+            <img src="mine (5).jpeg" alt="Mining Division">
+            <h3>Agro-processing</h3>
+            <p>CPCIC extracts, refines, and processes minerals through advanced, eco-safe mining practices.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- JavaScript -->
+<script>
+    const energy = document.getElementById("energy");
+    const construction = document.getElementById("construction");
+    const mining = document.getElementById("mining");
+
+    let angle = 0; // starting angle
+
+    function animateDivisions() {
+        angle += 0.007 // medium speed
+
+        const centerX = window.innerWidth / 2; 
+        const centerY = 835; 
+        const radius = 175; 
+
+        // Energy
+        energy.style.position = "absolute";
+        energy.style.left = centerX + radius * Math.cos(angle) - energy.offsetWidth / 2 + "px";
+        energy.style.top  = centerY + radius * Math.sin(angle) - energy.offsetHeight / 2 + "px";
+
+        // Construction
+        construction.style.position = "absolute";
+        construction.style.left = centerX + radius * Math.cos(angle + 2) - construction.offsetWidth / 2 + "px";
+        construction.style.top  = centerY + radius * Math.sin(angle + 2) - construction.offsetHeight / 2 + "px";
+
+        // Mining
+        mining.style.position = "absolute";
+        mining.style.left = centerX + radius * Math.cos(angle + 4) - mining.offsetWidth / 2 + "px";
+        mining.style.top  = centerY + radius * Math.sin(angle + 4) - mining.offsetHeight / 2 + "px";
+
+        requestAnimationFrame(animateDivisions);
+    }
+
+    animateDivisions();
+</script>
+
+
+<!-- HERO -->
+<section class="hero">
+    <div class="overlay"></div>
+    <h1>CPCIC — CLEANER PRODUCTION and CLIMATE INNOVATION Centre</h1>
+    <p>Building Rwanda’s future through infrastructure, energy, agriculture, and mining innovation.</p>
+</section>
+
+<!-- DIVISIONS -->
+<section class="divisions">
+    <h2 style="margin-top: 25px;">Our Core Divisions</h2>
+
+    <div class="division-grid">
+
+        <!-- Energy -->
+        <div class="division-card" id="energy">
+            <img src="mine (4).jpeg" alt="Energy">
+            <h3>Energy Devl</h3>
+            <p>
+                CPCIC drives Rwanda’s transition to reliable and sustainable energy by investing in solar, hydro, and modern renewable technologies. The Energy Division develops large-scale power plants, rural electrification solutions, and smart-grid systems to ensure efficient distribution. Its focus is creating long-term energy security and supporting national economic growth through cleaner, affordable power.
+            </p>
+        </div>
+
+        <!-- Construction -->
+        <div class="division-card" id="construction">
+            <img src="mine (3).jpeg" alt="Construction">
+            <h3>Construction & Engineering</h3>
+            <p>
+                The Construction Division leads major infrastructure projects, delivering durable roads, bridges, commercial buildings, and residential developments. CPCIC applies advanced engineering standards, modern equipment, and strict safety practices. Through high-quality construction and innovative planning, this division supports Rwanda’s urban growth and ensures communities gain access to strong, efficient, and sustainable public infrastructure.
+            </p>
+        </div>
+
+        <!-- Mining -->
+        <div class="division-card" id="mining">
+            <img src="mine (2).jpeg" alt="Mining">
+            <h3>Mining & Mineral Processing</h3>
+            <p>
+                CPCIC’s Mining Division extracts and processes minerals using environmentally responsible methods. It works on mineral exploration, refining operations, and downstream value-addition to strengthen Rwanda’s mining economy. With advanced technologies and strict environmental control, the division ensures safe extraction practices while increasing national revenue and promoting sustainable development within mining communities.
+            </p>
+        </div>
+
+        <!-- Agriculture -->
+        <div class="division-card" id="agriculture">
+            <img src="mine (1).jpeg" alt="Agriculture">
+            <h3>Agriculture & Food Production</h3>
+            <p>
+                The Agriculture Division improves food security by supporting irrigation, modern farming tools, and climate-smart agricultural practices. CPCIC invests in agro-processing facilities, storage systems, and farmer-support programs to reduce post-harvest losses. Its goal is creating a strong agricultural value chain that increases productivity, empowers farmers, and strengthens Rwanda’s long-term food resilience.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- FLOATING ICONS -->
+<div class="center-section" id="overview">
+    <h1 >CPCIC Overview "Mining"</h1>
+
+    <p >
+        CPCIC continues to expand its role in national development by focusing on innovative strategies,
+        sustainable investment, and long-term solutions for Rwanda’s economic growth. The institution
+        collaborates with partners, government agencies, and communities to ensure that projects deliver
+        real impact. By applying modern technology and efficient management, CPCIC strengthens national
+        capacity while creating new economic pathways for citizens. Its commitment to transparency,
+        sustainability, and quality remains central to its mission, ensuring that every initiative supports
+        broader development goals and contributes to a strong and resilient national economy.
+    </p>
+
+    <p>
+        The corporation prioritizes projects that drive productivity and broaden national opportunity.
+        Through strategic planning and careful resource allocation, CPCIC ensures that each investment
+        produces measurable benefits. Whether developing infrastructure, supporting agriculture, or enhancing
+        the mining sector, CPCIC works to uplift communities and promote inclusive growth. Its approach blends
+        innovation with practicality, ensuring that long-term stability is never sacrificed for short-term
+        gains. By staying aligned with global standards and embracing modern techniques, CPCIC strengthens
+        Rwanda’s competitive position in regional and international markets.
+    </p>
+
+    <p>
+        Innovation is at the heart of CPCIC’s development model. The organization integrates new technologies,
+        data-driven decision making, and sustainable methods across all divisions. This ensures that projects
+        remain efficient, environmentally responsible, and future-ready. By training teams, adopting updated
+        tools, and partnering with advanced institutions, CPCIC supports a culture of continuous improvement.
+        This forward-thinking mindset equips Rwanda to tackle long-term challenges, open new opportunities,
+        and build systems capable of supporting national development for generations to come.
+    </p>
+
+    <p>
+        CPCIC places strong emphasis on collaboration, recognizing that large-scale development requires strong
+        partnerships between private sectors, public institutions, and communities. Through transparent
+        communication and coordinated planning, the corporation ensures that all stakeholders are aligned and
+        informed. This reduces implementation delays, increases efficiency, and builds trust. By involving
+        local communities, CPCIC fosters a sense of ownership that strengthens project success and promotes
+        sustainable development practices aligned with Rwanda’s national goals.
+    </p>
+
+    <p>
+        Sustainability remains a guiding principle within CPCIC’s operations. Every project is designed to
+        minimize environmental impact while maximizing long-term benefits. From energy conservation and
+        responsible mining to climate-smart agriculture, CPCIC integrates eco-friendly strategies across all
+        divisions. This ensures that economic progress does not compromise the health of future generations.
+        Through consistent monitoring, updated standards, and responsible management, the corporation promotes
+        balanced development that protects natural resources while supporting national advancement.
+    </p>
+
+    <p  id="location"> 
+        Looking ahead, CPCIC is focused on expanding innovation, diversifying projects, and strengthening
+        national competitiveness. With clear goals and a dedicated team, the corporation is positioned to lead
+        transformative initiatives that elevate Rwanda’s regional leadership. Continued investment in
+        technology, infrastructure, and human capital will ensure long-term progress. By aligning with national
+        priorities and adapting to global changes, CPCIC remains committed to shaping a prosperous, sustainable,
+        and resilient future for the country.
+    </p>
+</div>
+
+<style>
+    .center-section {
+        max-width: 900px;
+        margin: 40px auto;
+        background: transparent;
+        text-align: center;
+        border-bottom:2px solid green ;
+        border-top:2px solid green ;
+        border-radius: 20px;
+        font-family: Arial, sans-serif;
+        line-height: 1.7;
+    }
+
+    .center-section h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    .center-section p {
+        margin: 25px 0;
+        font-size: 16px;
+        color: #222;
+    }
+</style>
+
+<h1 style="text-align: center;">Mining in Rwanda</h1>
+
+<main>
+    <div class="map-container">
+        <img src="mapfor industry.jpg" alt="Map of Rwanda" class="rwanda-map">
+        
+        <!-- Agriculture markers -->
+        <div class="marker" style="top: 46%; left: 57%;">
+            <button onclick="openPopup('Kigali', 'kigali.jpeg', 'Kigali produces horticulture crops, vegetables, and urban agriculture products.')">Kigali</button>
+        </div>
+
+        <div class="marker" style="top: 65%; left: 65%;">
+            <button onclick="openPopup('Huye', 'agri3.jpeg', 'Huye is famous for tea plantations and coffee farms.')">Huye</button>
+        </div>
+
+        <div class="marker" style="top: 15%; left: 75%;">
+            <button onclick="openPopup('Musanze', 'musanze.jpeg', 'Musanze has potato fields, horticulture, and high-altitude vegetable farms.')">Musanze</button>
+        </div>
+
+        <div class="marker" style="top: 60%; left: 25%;">
+            <button onclick="openPopup('Gisenyi', 'rubavu.jpeg', 'Gisenyi region produces fruits, beans, and rice in small-scale farms.')">Gisenyi</button>
+        </div>
+
+        
+    </div>
+</main>
+
+<!-- Popup -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <button class="close-btn" onclick="closePopup()">✖</button>
+        <h2 id="popup-title"></h2>
+        <img id="popup-image" class="popup-img" />
+        <p id="popup-text"></p>
+    </div>
+</div>
+
+<script>
+function openPopup(title, image, description) {
+    const popup = document.getElementById("popup");
+    const content = document.querySelector(".popup-content");
+
+    document.getElementById("popup-title").innerText = title;
+    document.getElementById("popup-image").src = image;
+    document.getElementById("popup-text").innerText = description;
+
+    popup.style.display = "flex";
+    content.classList.add("show");
+}
+
+function closePopup() {
+    const popup = document.getElementById("popup");
+    const content = document.querySelector(".popup-content");
+
+    content.classList.remove("show");
+    popup.style.display = "none";
+}
+</script>
+
+
+<footer style="
+    background: linear-gradient(135deg, #004d40, #26a69a);
+    color: #fff;
+    padding: 50px 20px;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+">
+
+    <div style="max-width: 1100px; margin: auto; display: flex; flex-wrap: wrap; gap: 30px; justify-content: space-between; align-items: flex-start;">
+
+        <!-- Left: Company Info -->
+        <div style="flex:1; min-width: 250px;">
+            <h3 style="margin-bottom:10px; font-size: 20px; letter-spacing:1px;">CPCIC - Kigali, Rwanda</h3>
+            <p style="margin:5px 0;">123 Green Street, Kigali, Rwanda</p>
+            <p style="margin:5px 0;">Email: <a href="mailto:info@cpcic.rw" style="color:#fff;text-decoration:underline;">info@cpcic.rw</a></p>
+            <p style="margin:5px 0;">Phone: +250 788 123 456</p>
+
+            <!-- Social Media -->
+            <div style="margin-top:15px;">
+                <!-- Replace the href values with your social media page URLs -->
+                <a href="https://facebook.com/YourPage" target="_blank" style="color:#fff; font-size:20px; margin-right:15px; transition: color 0.3s;">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/cpcic.rw/" target="_blank" style="color:#fff; font-size:20px; margin-right:15px; transition: color 0.3s;">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://x.com/RwandaCPCIC/with_replies" target="_blank" style="color:#fff; font-size:20px; margin-right:15px; transition: color 0.3s;">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.linkedin.com/posts/rwanda-cpcic-cleaner-production-and-climate-innovation-center-84b7a531b_circulareconomy-rwanda-innovation-activity-7379475608780673024-dXaG" target="_blank" style="color:#fff; font-size:20px; transition: color 0.3s;">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+
+            <p style="margin-top:20px; font-size:14px;">&copy; 2025 CPCIC. All rights reserved.</p>
+        </div>
+
+        <!-- Right: Mini Map -->
+        <div style="flex:1; min-width: 250px; height:200px; border-radius:12px; overflow:hidden; box-shadow:0 6px 15px rgba(0,0,0,0.3);">
+            <div id="footerMap" style="width:100%; height:100%; border-radius:12px;"></div>
+        </div>
+    </div>
+</footer>
+
+<!-- Font Awesome for Social Media Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+var footerMap = L.map('footerMap', {
+    zoomControl: false,
+    dragging: false,
+    scrollWheelZoom: false,
+    doubleClickZoom: false,
+     boxZoom: false,
+    keyboard: false,
+    tap: false
+}).setView([-1.9403, 29.8739], 12); // Kigali
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+}).addTo(footerMap);
+
+L.marker([-1.9403, 29.8739])
+    .addTo(footerMap)
+    .bindPopup("<b>CPCIC Head Office</b><br>Kigali, Rwanda")
+    .openPopup();
+</script>
+
+<style>
+/* Social media hover effect */
+footer a:hover {
+    color: #ffd700; /* golden color on hover */
+}
+</style>
+
+</body>
+</html>
